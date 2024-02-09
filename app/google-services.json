@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "1034369314869",
+    "firebase_url": "https://proyectodi-d46d8-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "proyectodi-d46d8",
+    "storage_bucket": "proyectodi-d46d8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1034369314869:android:efc342eb62fd0725f4017c",
+        "android_client_info": {
+          "package_name": "com.example.proyectodi"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCxEf9x4SKdZVvcWkLVdcRZZ8443dDCwpE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

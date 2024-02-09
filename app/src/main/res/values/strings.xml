@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">ProyectoDI</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="signIn">SING IN</string>
+    <string name="login">LOGIN</string>
+    <string name="crea_tu_cuenta">CREA TU CUENTA</string>
+    <string name="email">Email</string>
+    <string name="repeat_password">Repeat password</string>
+    <string name="crear">CREAR</string>
+    <string name="nombre">Nombre</string>
+    <string name="actualizar">ACTUALIZAR</string>
+    <string name="personaliza_tu_cuenta">Personaliza tu cuenta:</string>
+    <string name="editar">EDITAR</string>
+</resources>
