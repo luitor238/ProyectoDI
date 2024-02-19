@@ -129,9 +129,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE, nul
         }
         return articulos
     }
-
-
-
+    
     fun eliminarRegistro(id: Int): Boolean {
         val db = writableDatabase
         val whereClause = "$KEY_ID = ?"

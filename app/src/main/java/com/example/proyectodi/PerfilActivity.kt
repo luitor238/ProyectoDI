@@ -34,8 +34,10 @@ class PerfilActivity : AppCompatActivity() {
             val intent = Intent(this,PrincipalActivity::class.java)
             startActivity(intent)
         }
+        val imageUser: ImageButton = findViewById(R.id.btnperfil)
+        imageUser.setImageDrawable(usuario!!.getImage()!!.drawable)
 
-        //binding.imageUser.setImageResource(resources.getIdentifier(usuario!!.getImage(), "drawable", packageName))
+
         binding.imageUser.setImageDrawable(usuario!!.getImage()!!.drawable)
         binding.textViewEmail.text = usuario!!.getEmail()
         binding.textViewNombre.text = usuario!!.getNombre()

@@ -18,10 +18,11 @@ class Pelicula (private var nombre: String, private var portada: String, private
 
 class Usuario(
     private var id: String,
-        private var email: String,
-        private var password: String,
-        private var nombre: String,
-        private var image: ImageView) : Serializable {
+    private var email: String,
+    private var password: String,
+    private var nombre: String,
+    private var image: ImageView?
+) : Serializable {
 
     fun getId(): String {
         return id

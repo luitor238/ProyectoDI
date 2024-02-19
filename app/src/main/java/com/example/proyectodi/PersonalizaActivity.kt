@@ -41,7 +41,7 @@ class PersonalizaActivity : AppCompatActivity() {
         setContentView(view)
 
         Image = findViewById<ImageView>(R.id.imageUser)
-        val nombre = binding.editTextName.toString()
+        val nombre = binding.editTextName.text.toString()
 
 
         //CAMERA BUTTON
