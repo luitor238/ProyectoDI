@@ -3,11 +3,11 @@ package com.example.proyectodi
 import android.widget.ImageView
 import java.io.Serializable
 
-class Pelicula (private var nombre: String, private var portada: String, private var sinopsis: String){
+class Pelicula (private var nombre: String, private var portada: ImageView, private var sinopsis: String): Serializable{
     fun getNombre(): String{
         return nombre
     }
-    fun getPortada(): String{
+    fun getPortada(): ImageView{
         return portada
     }
     fun getSinopsis(): String{

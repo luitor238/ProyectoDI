@@ -75,7 +75,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE, nul
     fun insertarPelicula(pelicula: Pelicula) {
         val db = writableDatabase
         val values = ContentValues().apply {
-            put(COLUMN_PORTADA, pelicula.getPortada())
+            put(COLUMN_PORTADA,  imageViewToString(pelicula.getPortada()))
             put(COLUMN_TITULO, pelicula.getNombre())
             put(COLUMN_SINOPSIS, pelicula.getSinopsis())
         }
@@ -121,7 +121,9 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE, nul
                     val nombre = it.getString(it.getColumnIndex(COLUMN_TITULO))
                     val portada = it.getString(it.getColumnIndex(COLUMN_PORTADA))
                     val sinopsis = it.getString(it.getColumnIndex(COLUMN_SINOPSIS))
-                    val pelicula = Pelicula(nombre, portada, sinopsis)
+                    var image: ImageView? = null
+                    stringToImageView(portada, image!!)
+                    val pelicula = Pelicula(nombre, image, sinopsis)
 
                     articulos.add(pelicula)
                 } while (it.moveToNext())
