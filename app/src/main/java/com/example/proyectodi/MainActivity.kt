@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.view.View
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
+import com.example.proyectodi.GlobalVariables.usuario
 import com.google.firebase.FirebaseApp
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.auth
@@ -36,6 +37,8 @@ class MainActivity : AppCompatActivity() {
 
         auth = com.google.firebase.Firebase.auth
 
+        val dbHelper = DatabaseHelper(this)
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
@@ -51,7 +54,7 @@ class MainActivity : AppCompatActivity() {
 
         try {
             btnIniciarSesion.setOnClickListener{
-                if (Email.text.isNotEmpty() && Password.text.isNotEmpty()){
+                /*if (Email.text.isNotEmpty() && Password.text.isNotEmpty()){
 
                     auth.signInWithEmailAndPassword(
                         Email.text.toString(),
@@ -73,25 +76,60 @@ class MainActivity : AppCompatActivity() {
                             dialog.show()
                         }
                     }
+*/
+                if (Email.text.isNotEmpty() && Password.text.isNotEmpty()) {
+                    auth.signInWithEmailAndPassword(Email.text.toString(),Password.text.toString()).addOnCompleteListener(this) { task ->
 
+                        if (task.isSuccessful) {
+
+                                val userId = FirebaseAuth.getInstance().currentUser?.uid
+                                if (userId != null) {
+
+                                    val usuarios = dbHelper.getUsuarios()
+
+                                    if (usuarios.isNotEmpty()) {
+                                        for (e in usuarios) {
+                                            if (e.getId() == userId) {
+                                                usuario = e
+                                            }
+                                        }
+                                    }
+
+                                    val intent = Intent(this, PrincipalActivity::class.java)
+                                    startActivity(intent)
+
+                                } else {
+                                    android.app.AlertDialog.Builder(this)
+                                        .setMessage("Error en la autenticación")
+                                        .setPositiveButton("Aceptar", null)
+                                        .create()
+                                        .show()
+                                }
+                            } else {
+                                android.app.AlertDialog.Builder(this)
+                                    .setMessage("Error en la autenticación")
+                                    .setPositiveButton("Aceptar", null)
+                                    .create()
+                                    .show()
+                            }
+                        }
                 }else{
                     textViewWarning.text = "Debes rellenar todos los campos"
                     textViewWarning.visibility = View.VISIBLE
-                    Log.d(TAG, "Debes rellenar los campos") }
-
+                }
             }
         } catch (e: Exception) {
-            Log.d(TAG, "Error en la autentificacion del usuario")
+            android.app.AlertDialog.Builder(this)
+                .setMessage("Error en la autenticación")
+                .setPositiveButton("Aceptar", null)
+                .create()
+                .show()
         }
 
-        try {
-            btnCrearCuenta.setOnClickListener(View.OnClickListener {
-                val intent = Intent(this, SignInActivity::class.java)
-                startActivity(intent)
-            })
+        btnCrearCuenta.setOnClickListener(View.OnClickListener {
+            val intent = Intent(this, SignInActivity::class.java)
+            startActivity(intent)
+        })
 
-        } catch (e: Exception) {
-            Log.d(TAG, "Usuario No Creado Correctamente")
-        }
     }
 }

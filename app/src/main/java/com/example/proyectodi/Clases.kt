@@ -27,6 +27,9 @@ class Usuario(
     fun getId(): String {
         return id
     }
+    fun setId(newId: String){
+        id=newId
+    }
     fun getEmail(): String {
         return email
     }

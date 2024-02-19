@@ -27,7 +27,15 @@ class PrincipalActivity : AppCompatActivity() {
             val intent = Intent(this,PrincipalActivity::class.java)
             startActivity(intent)
         }
-        imageButton.setImageDrawable(GlobalVariables.usuario!!.getImage()!!.drawable)
+
+        val imageUser: ImageButton = findViewById(R.id.btnperfil)
+        if (GlobalVariables.usuario != null) {
+            imageUser.setImageDrawable(GlobalVariables.usuario!!.getImage()!!.drawable)}
+        imageUser.setOnClickListener {
+            val intent = Intent(this,PerfilActivity::class.java)
+            startActivity(intent)
+        }
+
 
 
 

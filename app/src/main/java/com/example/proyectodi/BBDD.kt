@@ -38,7 +38,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE, nul
     override fun onCreate(db: SQLiteDatabase) {
 
         val USUARIOS = "CREATE TABLE $TABLA_USUARIOS(" +
-                "$KEY_ID_USUARIO TEXT PRIMARY KEY AUTOINCREMENT," +
+                "$KEY_ID_USUARIO TEXT PRIMARY KEY," +
                 "$COLUMN_EMAIL TEXT," +
                 "$COLUMN_NOMBRE TEXT," +
                 "$COLUMN_PASSWORD TEXT," +
@@ -46,7 +46,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE, nul
         db.execSQL(USUARIOS)
 
         val PELICULAS = "CREATE TABLE $TABLA_PELICULAS(" +
-                "$KEY_ID TEXT PRIMARY KEY AUTOINCREMENT," +
+                "$KEY_ID INTEGER PRIMARY KEY AUTOINCREMENT," +
                 "$COLUMN_PORTADA TEXT," +
                 "$COLUMN_TITULO TEXT," +
                 "$COLUMN_SINOPSIS TEXT)"

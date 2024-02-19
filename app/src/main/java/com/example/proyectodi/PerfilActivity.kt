@@ -12,6 +12,7 @@ import android.widget.TextView
 import androidx.appcompat.widget.Toolbar
 import com.example.proyectodi.GlobalVariables.usuario
 import com.example.proyectodi.databinding.ActivityPerfilBinding
+import com.google.firebase.auth.FirebaseAuth
 
 class PerfilActivity : AppCompatActivity() {
 
@@ -36,6 +37,10 @@ class PerfilActivity : AppCompatActivity() {
         }
         val imageUser: ImageButton = findViewById(R.id.btnperfil)
         imageUser.setImageDrawable(usuario!!.getImage()!!.drawable)
+        imageUser.setOnClickListener {
+            val intent = Intent(this,PerfilActivity::class.java)
+            startActivity(intent)
+        }
 
 
         binding.imageUser.setImageDrawable(usuario!!.getImage()!!.drawable)
@@ -45,6 +50,7 @@ class PerfilActivity : AppCompatActivity() {
 
         binding.btnEditar.setOnClickListener {
             val intent = Intent(this,PersonalizaActivity::class.java)
+            intent.putExtra("activity", "ActivityPersonaliza")
             startActivity(intent)
         }
 
@@ -56,6 +62,8 @@ class PerfilActivity : AppCompatActivity() {
         }
 
         binding.btnSi.setOnClickListener {
+            val userId = FirebaseAuth.getInstance().currentUser?.uid
+            usuario!!.setId(userId!!)
             val dbHelper = DatabaseHelper(this)
             dbHelper.insertarUsuario(usuario!!)
             finishAffinity()

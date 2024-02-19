@@ -85,6 +85,7 @@ class SignInActivity : AppCompatActivity() {
                 Log.d(TAG, "Usuario Creado Correctamente")
 
                 val intent = Intent(this, PersonalizaActivity::class.java)
+                intent.putExtra("activity", "ActivitySignIn")
                 usuario!!.setEmail(Email.text.toString())
                 usuario!!.setPassword(Password.text.toString())
                 startActivity(intent)
