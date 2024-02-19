@@ -12,4 +12,8 @@
     <string name="actualizar">ACTUALIZAR</string>
     <string name="personaliza_tu_cuenta">Personaliza tu cuenta:</string>
     <string name="editar">EDITAR</string>
+    <string name="title">ARTFILM</string>
+    <string name="no_salir">No salir</string>
+    <string name="salir_y_guardar">Salir y guardar</string>
+    <string name="seguro_que_quieres_salir">¿Seguro que quieres salir?</string>
 </resources>

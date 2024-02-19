@@ -39,17 +39,14 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
         //ASIGNACION DE VARIABLES CON ELEMENTOS LAYOUT
         Log.d(TAG, "ASIGNACION DE VARIABLES CON ELEMENTOS LAYOUT")
-
 
         Email = findViewById(R.id.editTextEmail)
         Password = findViewById(R.id.editTextPassword)
         btnIniciarSesion = findViewById(R.id.btnLogin)
         btnCrearCuenta = findViewById(R.id.btnSignIn)
         textViewWarning = findViewById(R.id.textViewWarning)
-
 
 
         try {
@@ -66,7 +63,6 @@ class MainActivity : AppCompatActivity() {
                             //val user = auth.currentUser
                             val intent = Intent(this, PrincipalActivity::class.java)
                             startActivity(intent)
-
 
                         } else {
                             val builder = AlertDialog.Builder(this)
@@ -87,7 +83,6 @@ class MainActivity : AppCompatActivity() {
         } catch (e: Exception) {
             Log.d(TAG, "Error en la autentificacion del usuario")
         }
-
 
         try {
             btnCrearCuenta.setOnClickListener(View.OnClickListener {

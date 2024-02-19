@@ -9,6 +9,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.TextView
+import com.example.proyectodi.GlobalVariables.usuario
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
@@ -28,6 +29,8 @@ class SignInActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_in)
+
+        usuario = Usuario()
 
         Email = findViewById(R.id.editTextEmail)
         Password = findViewById(R.id.editTextPassword)
@@ -67,12 +70,10 @@ class SignInActivity : AppCompatActivity() {
             Log.d(TAG, "Error no esperado")
         }
 
-
         btnVolver.setOnClickListener(View.OnClickListener {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         })
-
 
     }
 
@@ -84,8 +85,8 @@ class SignInActivity : AppCompatActivity() {
                 Log.d(TAG, "Usuario Creado Correctamente")
 
                 val intent = Intent(this, PersonalizaActivity::class.java)
-                intent.putExtra("Email", Email.text.toString())
-                intent.putExtra("Password", Password.text.toString())
+                usuario!!.setEmail(Email.text.toString())
+                usuario!!.setPassword(Password.text.toString())
                 startActivity(intent)
             } else {
                 textViewWarning.text = "Usuario No Creado Correctamente"
