@@ -4,11 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.Button
-import android.widget.EditText
 import android.widget.ImageButton
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.appcompat.widget.Toolbar
 import com.example.proyectodi.GlobalVariables.usuario
 import com.example.proyectodi.databinding.ActivityPerfilBinding
@@ -39,19 +35,10 @@ class PerfilActivity : AppCompatActivity() {
         binding.textViewNombre.text = usuario!!.getNombre()
         binding.textViewPassword.text = usuario!!.getPassword()
 
-        //Cambia el nombre del boton volver si venimos de crearnos un nuevo usuario
-        if (activityOrigin == "ActivitySignIn") {
-            binding.btnVolver.text = "PRINCIPAL"
-        }
-
         //FUNCIONALIDAD BOTONES
         binding.btnEditar.setOnClickListener {
             val intent = Intent(this,PersonalizaActivity::class.java)
             intent.putExtra("activity", "ActivityPerfil")
-            startActivity(intent)
-        }
-        binding.btnVolver.setOnClickListener {
-            val intent = Intent(this,PrincipalActivity::class.java)
             startActivity(intent)
         }
         binding.btnSalir.setOnClickListener {

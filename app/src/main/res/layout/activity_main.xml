@@ -27,7 +27,8 @@
             android:layout_gravity="center"
             android:layout_marginTop="50dp"
             android:background="@color/transparent"
-            android:src="@drawable/logoicono" />
+            android:src="@drawable/logoicono"
+            android:padding="50dp"/>
 
         <!--USERNAME-->
         <com.google.android.material.textfield.TextInputLayout
