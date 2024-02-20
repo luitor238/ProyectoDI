@@ -57,36 +57,36 @@ class MainActivity : AppCompatActivity() {
 
                         if (task.isSuccessful) {
 
-                                val userId = FirebaseAuth.getInstance().currentUser?.uid
-                                if (userId != null) {
+                            val userId = FirebaseAuth.getInstance().currentUser?.uid
+                            if (userId != null) {
 
-                                    val usuarios = dbHelper.getUsuarios()
+                                val usuarios = dbHelper.getUsuarios()
 
-                                    if (usuarios.isNotEmpty()) {
-                                        for (e in usuarios) {
-                                            if (e.getId() == userId) {
-                                                usuario!!.setId(e.getId())
-                                                usuario!!.setEmail(e.getEmail())
-                                                usuario!!.setPassword(e.getPassword())
-                                                usuario!!.setNombre(e.getNombre())
-                                                usuario!!.setImage(e.getImage()!!)
-                                            }
+                                if (usuarios.isNotEmpty()) {
+                                    for (e in usuarios) {
+                                        if (e.getId() == userId) {
+                                            usuario!!.setId(e.getId())
+                                            usuario!!.setEmail(e.getEmail())
+                                            usuario!!.setPassword(e.getPassword())
+                                            usuario!!.setNombre(e.getNombre())
+                                            usuario!!.setImage(e.getImage()!!)
                                         }
                                     }
-
-                                    val intent = Intent(this, PrincipalActivity::class.java)
-                                    startActivity(intent)
-
-                                } else {
-                                    android.app.AlertDialog.Builder(this)
-                                        .setMessage("Error en la autenticación")
-                                        .setPositiveButton("Aceptar", null)
-                                        .create()
-                                        .show()
                                 }
+
+                                val intent = Intent(this, PrincipalActivity::class.java)
+                                startActivity(intent)
+
                             } else {
                                 android.app.AlertDialog.Builder(this)
-                                    .setMessage("Error en la autenticación")
+                                    .setMessage("Email o contraseña incorreectos")
+                                    .setPositiveButton("Aceptar", null)
+                                    .create()
+                                    .show()
+                            }
+                            } else {
+                                android.app.AlertDialog.Builder(this)
+                                    .setMessage("Email o contraseña incorreectos")
                                     .setPositiveButton("Aceptar", null)
                                     .create()
                                     .show()

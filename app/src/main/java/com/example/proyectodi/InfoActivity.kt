@@ -1,6 +1,5 @@
 package com.example.proyectodi
 
-import android.R
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle

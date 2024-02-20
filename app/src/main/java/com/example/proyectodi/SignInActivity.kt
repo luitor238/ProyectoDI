@@ -89,7 +89,7 @@ class SignInActivity : AppCompatActivity() {
                 usuario!!.setPassword(Password.text.toString())
                 startActivity(intent)
             } else {
-                textViewWarning.text = "Usuario No Creado Correctamente"
+                textViewWarning.text = "El formato del email no es correcto."
                 textViewWarning.visibility = View.VISIBLE
                 Log.d(TAG, "Usuario No Creado Correctamente")
             }
