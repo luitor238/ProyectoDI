@@ -30,7 +30,6 @@ class SignInActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_in)
 
-        usuario = Usuario("","","","",null)
 
         Email = findViewById(R.id.editTextEmail)
         Password = findViewById(R.id.editTextPassword)

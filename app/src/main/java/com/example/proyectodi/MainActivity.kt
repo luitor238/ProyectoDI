@@ -27,56 +27,31 @@ class MainActivity : AppCompatActivity() {
     private lateinit var btnCrearCuenta: Button
     private lateinit var textViewWarning: TextView
     private lateinit var auth: FirebaseAuth
-    //VARIABLE SISTEMA LOG
-    private val TAG = "LoginActivity"
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        Log.d(TAG, "onCreate: La actividad está siendo creada")
-        //CREACION DE LA VISTA
 
+        //CREACION DE LA VISTA
         auth = com.google.firebase.Firebase.auth
 
+        //LLAMADA BASE DE DATOS
         val dbHelper = DatabaseHelper(this)
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        //ASIGNACION DE VARIABLES CON ELEMENTOS LAYOUT
-        Log.d(TAG, "ASIGNACION DE VARIABLES CON ELEMENTOS LAYOUT")
-
+        //ASIGNACION DE VARIABLES
         Email = findViewById(R.id.editTextEmail)
         Password = findViewById(R.id.editTextPassword)
         btnIniciarSesion = findViewById(R.id.btnLogin)
         btnCrearCuenta = findViewById(R.id.btnSignIn)
         textViewWarning = findViewById(R.id.textViewWarning)
+        usuario= Usuario("","","","",null)
 
-
+        //FUNCIONALIDAD BOTONES
         try {
             btnIniciarSesion.setOnClickListener{
-                /*if (Email.text.isNotEmpty() && Password.text.isNotEmpty()){
 
-                    auth.signInWithEmailAndPassword(
-                        Email.text.toString(),
-                        Password.text.toString()
-                    ).addOnCompleteListener(this) { task ->
-                        if (task.isSuccessful) {
-                            // Sign in success, update UI with the signed-in user's information
-                            Log.d(TAG, "Autenticacion del ususario Correcta")
-                            //val user = auth.currentUser
-                            val intent = Intent(this, PrincipalActivity::class.java)
-                            startActivity(intent)
-
-                        } else {
-                            val builder = AlertDialog.Builder(this)
-                            builder.setTitle("Error")
-                            builder.setMessage("Se ha producido un error en la autenticacion del ususario")
-                            builder.setPositiveButton("Aceptar", null)
-                            val dialog: AlertDialog = builder.create()
-                            dialog.show()
-                        }
-                    }
-*/
                 if (Email.text.isNotEmpty() && Password.text.isNotEmpty()) {
                     auth.signInWithEmailAndPassword(Email.text.toString(),Password.text.toString()).addOnCompleteListener(this) { task ->
 
@@ -90,7 +65,11 @@ class MainActivity : AppCompatActivity() {
                                     if (usuarios.isNotEmpty()) {
                                         for (e in usuarios) {
                                             if (e.getId() == userId) {
-                                                usuario = e
+                                                usuario!!.setId(e.getId())
+                                                usuario!!.setEmail(e.getEmail())
+                                                usuario!!.setPassword(e.getPassword())
+                                                usuario!!.setNombre(e.getNombre())
+                                                usuario!!.setImage(e.getImage()!!)
                                             }
                                         }
                                     }

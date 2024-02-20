@@ -59,14 +59,14 @@
                 <Button
                     android:id="@+id/btnPeliculas"
                     style="?attr/materialButtonOutlinedStyle"
-                    android:layout_width="180dp"
+                    android:layout_width="170dp"
                     android:layout_height="60dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="20dp"
                     android:backgroundTint="@color/terciary"
                     android:elevation="5dp"
                     android:shadowColor="#5C5C5C"
-                    android:text="Peliculas"
+                    android:text="@string/series"
                     android:textColor="#FFFFFF"
                     android:textSize="16sp"
                     android:textStyle="bold"
@@ -78,27 +78,36 @@
                 <Button
                     android:id="@+id/btnSeries"
                     style="?attr/materialButtonOutlinedStyle"
-                    android:layout_width="180dp"
+                    android:layout_width="0dp"
                     android:layout_height="60dp"
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="10dp"
+                    android:layout_marginEnd="20dp"
                     android:backgroundTint="@color/terciary"
                     android:elevation="5dp"
                     android:shadowColor="#5C5C5C"
-                    android:text="Series"
+                    android:text="@string/peliculas"
                     android:textColor="#FFFFFF"
                     android:textSize="16sp"
                     android:textStyle="bold"
                     app:cornerRadius="5dp"
+                    app:layout_constraintEnd_toStartOf="@+id/btnPeliculas"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:strokeColor="@color/primary" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerView2"
+            <androidx.viewpager.widget.ViewPager
+                android:id="@+id/viewPager"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="200dp"
+                android:visibility="gone"/>
+
+            <androidx.viewpager.widget.ViewPager
+                android:id="@+id/viewPagerPeliculas"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:visibility="gone"/>
 
         </LinearLayout>
 

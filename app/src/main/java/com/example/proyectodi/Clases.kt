@@ -57,7 +57,6 @@ class Usuario(
 
 }
 
-
 object GlobalVariables {
     var pelicula: Pelicula? = null
     var usuario: Usuario? = null

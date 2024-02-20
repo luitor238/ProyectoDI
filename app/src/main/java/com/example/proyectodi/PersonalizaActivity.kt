@@ -17,8 +17,6 @@ class PersonalizaActivity : AppCompatActivity() {
 
     private lateinit var Image: ImageView
     private lateinit var binding: ActivityPersonalizaBinding
-    private val TAG = "PersonalizaActivity"
-
     val pickMedia =
         registerForActivityResult(ActivityResultContracts.PickVisualMedia()) { uri ->
             if (uri != null) {
@@ -28,26 +26,30 @@ class PersonalizaActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        //INICIALIZA BINDING
         binding = ActivityPersonalizaBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        Image = binding.imageUser
-
-        //CAMERA BUTTON
-        binding.btnCamera.setOnClickListener {
-            camera()
-        }
-
-        //GALLERY BUTTON
-        binding.btnGallery.setOnClickListener {
-            pickMedia.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
-        }
-
-
+        //ACTIVITY PRECEDENTE
         val activityOrigin = intent.getStringExtra("activity")
 
-        //GO BACK BUTTON
-        binding.imageBtnGoBack3.setOnClickListener {
+        Image = binding.imageUser
+
+        //FUNCIONALIDAD BOTONES
+        binding.btnCamera.setOnClickListener {
+            //Abre la camara
+            val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+            if (intent.resolveActivity(packageManager) != null) {
+                startActivityForResult(intent, 1)
+            }
+        }
+        binding.btnGallery.setOnClickListener {
+            //Abre la galeria
+            pickMedia.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
+        }
+        binding.imageBtnGoBack.setOnClickListener {
+            //Vuelve a la actividad de la que proviene
             when (activityOrigin) {
                 "ActivitySignIn" -> {
                     val intent = Intent(this, SignInActivity::class.java)
@@ -62,8 +64,6 @@ class PersonalizaActivity : AppCompatActivity() {
                 }
             }
         }
-
-        //ACTUALIZAR BUTTON
         binding.btnActualizar.setOnClickListener {
             val nombre = binding.editTextName.text.toString()
             if (nombre.isNotEmpty()) {
@@ -74,18 +74,10 @@ class PersonalizaActivity : AppCompatActivity() {
             } else {
                 binding.textViewWarning.text = "Debes rellenar el campo nombre"
                 binding.textViewWarning.visibility = View.VISIBLE
-                Log.d(TAG, "Debes rellenar todos los campos")
             }
         }
     }
 
-    //Funcion Abre la camara
-    private fun camera() {
-        val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-        if (intent.resolveActivity(packageManager) != null) {
-            startActivityForResult(intent, 1)
-        }
-    }
 
     //Funcion Captura la imagen
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

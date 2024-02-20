@@ -17,4 +17,7 @@
     <string name="salir_y_guardar">Salir y guardar</string>
     <string name="seguro_que_quieres_salir">¿Seguro que quieres salir?</string>
     <string name="las_mejores_peliculas_y_series_del_momento">Las mejores peliculas y series del momento</string>
+    <string name="peliculas">Peliculas</string>
+    <string name="series">Series</string>
+    <string name="volver">VOLVER</string>
 </resources>

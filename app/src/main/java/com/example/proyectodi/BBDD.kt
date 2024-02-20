@@ -21,6 +21,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE, nul
 
         // Constantes de la tabla USUARIOS
         private const val TABLA_USUARIOS = "usuarios"
+        private const val KEY_ID_US = "idU"
         private const val KEY_ID_USUARIO = "id"
         private const val COLUMN_EMAIL = "email"
         private const val COLUMN_NOMBRE = "nombre"
@@ -38,7 +39,8 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE, nul
     override fun onCreate(db: SQLiteDatabase) {
 
         val USUARIOS = "CREATE TABLE $TABLA_USUARIOS(" +
-                "$KEY_ID_USUARIO TEXT PRIMARY KEY," +
+                "$KEY_ID_US INTEGER PRIMARY KEY," +
+                "$KEY_ID_USUARIO TEXT," +
                 "$COLUMN_EMAIL TEXT," +
                 "$COLUMN_NOMBRE TEXT," +
                 "$COLUMN_PASSWORD TEXT," +
